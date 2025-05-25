@@ -1,24 +1,22 @@
 <h1 style="display: inline;">Proyecto Final – Sistema de Recargas y Viajes
 <img src="https://github.com/user-attachments/assets/26ed7cb8-56f5-4e3b-882e-bf9e1ae8bc74" alt="portatil" width="100" style="vertical-align: middle; margin-left: 10px;" /> </h1>
 
-
-
 Este repositorio contiene la implementación de las mejoras al sistema de base de datos `sistema_recargas_viajes`, desarrolladas como parte del proyecto final de la asignatura **Programación de Bases de Datos**.
 
-## 📚 Tabla de Contenido
+## 📋 Tabla de Contenido
 
-- [📌 Funcionalidades implementadas](#funcionalidades-implementadas)
-- [🛠️ Instrucciones para ejecutar los scripts](#instrucciones-para-ejecutar-los-scripts)
-- [📐 Diagrama ER (cambios estructurales)](#diagrama-er-cambios-estructurales)
-- [🧾 Tablas modificadas o creadas](#tablas-modificadas-o-creadas)
-- [🗂️ Tipo de datos insertados](#tipo-de-datos-insertados)
-- [📋 Consultas desarrolladas](#consultas-desarrolladas)
-- [🔐 Credenciales (base de datos de pruebas)](#credenciales-base-de-datos-de-pruebas)
-- [✅ Conclusiones](#conclusiones)
-- [🛠️ Recomendaciones](#recomendaciones)
-- [👥 Desarrolladores](#desarrolladores)
+- [📌 Funcionalidades implementadas](#-funcionalidades-implementadas)
+- [🛠️ Instrucciones para ejecutar los scripts](#️-instrucciones-para-ejecutar-los-scripts)
+- [📐 Diagrama ER (cambios estructurales)](#-diagrama-er-cambios-estructurales)
+- [🧾 Tablas modificadas o creadas](#-tablas-modificadas-o-creadas)
+- [🗂️ Tipo de datos insertados](#️-tipo-de-datos-insertados)
+- [📋 Consultas desarrolladas](#-consultas-desarrolladas)
+- [🔐 Credenciales (base de datos de pruebas)](#-credenciales-base-de-datos-de-pruebas)
+- [✅ Conclusiones](#-conclusiones)
+- [🛠️ Recomendaciones](#️-recomendaciones)
+- [👥 Desarrolladores](#-desarrolladores)
 
-
+---
 
 ## 📌 Funcionalidades implementadas
 
@@ -107,7 +105,6 @@ Se insertaron más de 100 registros entre tarjetas, recargas, promociones, dispo
 - También sería útil desarrollar vistas y procedimientos almacenados que faciliten la administración y análisis de los datos sin necesidad de escribir consultas complejas manualmente.
 - Por último, se sugiere complementar este sistema con una interfaz gráfica o aplicación web que consuma los datos y permita una interacción más intuitiva por parte de los usuarios finales o administrativos.
 
-
 ## 👥 Desarrolladores
 
 Este proyecto fue desarrollado por **Dafne Julieth Cortés Sarmiento**, **Johana Jazmín Saavedra Tafur** y **David Stiven Silva Velandia**, estudiantes de tercer semestre del programa **Técnica Profesional en Programación de Aplicaciones de Software** de la **Fundación Universitaria Compensar**.
@@ -136,5 +133,3 @@ Como equipo, tuvimos una participación activa en la **creación de estructuras 
 <p><em>Fundación Universitaria UCompensar – 2025</em></p>
 
 </div>
-
-
