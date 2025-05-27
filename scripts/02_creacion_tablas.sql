@@ -14,6 +14,3 @@ CREATE TABLE usuarios (
   correo VARCHAR(100)
 );
 
--- Modificación a la tabla tarjetas para relacionarla con usuarios
-ALTER TABLE tarjetas
-ADD COLUMN usuario_id INTEGER REFERENCES usuarios(usuario_id);
