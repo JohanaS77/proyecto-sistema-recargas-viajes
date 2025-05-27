@@ -32,9 +32,12 @@ Este repositorio contiene la implementación de las mejoras al sistema de base d
    - Se incluyó el uso de dispositivos (torniquetes, móviles, etc.) para validar los viajes.
    - Se relacionaron los viajes con los dispositivos y se permite hacer seguimiento por tipo.
 
-4. **Mejora adicional: Registro de incidencias**
-   - Se propuso e implementó una nueva tabla para reportar incidencias durante los viajes.
-   - Permite clasificar las incidencias por gravedad y analizar su frecuencia por estación o tipo de dispositivo.
+4. **Mejora adicional: Historial de recargas por tarjeta**
+   - Se implementó una nueva funcionalidad que permite llevar un historial detallado de las recargas realizadas por cada tarjeta, incluyendo el monto, la fecha y el medio de pago.
+   - Se creó una tabla `usuarios` para asociar cada tarjeta a un usuario, lo cual permite consultas más personalizadas y análisis más completos.
+   - Esta mejora aporta valor al sistema al facilitar la trazabilidad de recargas, identificar usuarios frecuentes y evaluar los medios de pago más utilizados.
+
+[⬆️ Volver a la tabla de contenido](#-tabla-de-contenido)
 
 ---
 
@@ -52,6 +55,10 @@ Este repositorio contiene la implementación de las mejoras al sistema de base d
    - `03_insertar_datos.sql` – Inserción de registros de prueba (más de 100).
    - `04_consultas.sql` – Consultas requeridas por el proyecto.
 
+[⬆️ Volver a la tabla de contenido](#-tabla-de-contenido)
+
+---
+
 ## 📐 Diagrama ER (cambios estructurales)
 
 ```mermaid
@@ -59,9 +66,13 @@ erDiagram
     tarjetas ||--o{ auditoria_tarjetas : tiene
     recargas }o--|| promociones : usa
     viajes }o--|| dispositivos : valida_con  
-    viajes ||--o{ incidencias : genera
-    viajes }o--|| estaciones : ocurre_en
+    tarjetas ||--o{ usuarios : pertenece_a
+    historial_recargas }o--|| tarjetas : registro
 ```
+
+[⬆️ Volver a la tabla de contenido](#-tabla-de-contenido)
+
+---
 
 ## 🧾 Tablas modificadas o creadas
 
@@ -70,11 +81,25 @@ erDiagram
 | `auditoria_tarjetas` | Registro de cambios de estado en tarjetas | `auditoria_id`, `tarjeta_id` |
 | `promociones` | Almacena promociones aplicadas a recargas | `promocion_id` |
 | `dispositivos` | Registra los dispositivos que validan viajes | `dispositivo_id` |
-| `incidencias` | Incidentes reportados durante viajes | `incidencia_id`, `viaje_id` |
+| `usuarios` | Representa a los dueños de tarjetas | `usuario_id` |
+| `historial_recargas` | Almacena recargas históricas con fecha y medio de pago | `historial_id`, `tarjeta_id` |
+
+[⬆️ Volver a la tabla de contenido](#-tabla-de-contenido)
 
 ## 🗂️ Tipo de datos insertados
 
-Se insertaron más de 100 registros entre tarjetas, recargas, promociones, dispositivos y viajes para validar correctamente todas las funcionalidades. En las incidencias se simularon diferentes niveles de gravedad (leve, media, alta) y su asociación con estaciones y dispositivos móviles.
+Se insertaron más de 100 registros en cada tabla creada o modificada:
+* 100 usuarios simulados
+* 100 tarjetas asociadas a usuarios
+* 100 registros de historial de recargas
+* 100 recargas con promociones
+* 100 dispositivos y viajes simulados para análisis
+
+Esto permite validar correctamente las funcionalidades y consultas desarrolladas.
+
+[⬆️ Volver a la tabla de contenido](#-tabla-de-contenido)
+
+---
 
 ## 📋 Consultas desarrolladas
 
@@ -82,8 +107,13 @@ Se insertaron más de 100 registros entre tarjetas, recargas, promociones, dispo
 - Recargas por promoción y monto recargado por tipo de promoción
 - Viajes sin validación y validaciones con dispositivos móviles en abril
 - Dispositivo con más validaciones
-- Total de incidencias por gravedad
-- Incidencias por estación y por tipo de dispositivo (con JOIN)
+- Total recargado por tarjeta en el último mes
+- Medios de pago más usados y su promedio
+- Historial de recargas con nombre del usuario (JOIN con tarjetas y usuarios)
+
+[⬆️ Volver a la tabla de contenido](#-tabla-de-contenido)
+
+---
 
 ## 🔐 Credenciales (base de datos de pruebas)
 
@@ -93,19 +123,32 @@ Se insertaron más de 100 registros entre tarjetas, recargas, promociones, dispo
 - **Port:** 33333
 - **DB:** sistema_recargas_viajes
 
+[⬆️ Volver a la tabla de contenido](#-tabla-de-contenido)
+
+---
+
 ## ✅ Conclusiones
 
-- El desarrollo de este proyecto permitió aplicar de manera práctica los conocimientos adquiridos en el curso de Programación de Bases de Datos, integrando conceptos como diseño de tablas, claves foráneas, funciones, triggers y consultas SQL avanzadas.
-- La implementación de mejoras como la auditoría de tarjetas, el registro de dispositivos y la gestión de incidencias, demostró cómo una base de datos puede evolucionar para responder a nuevas necesidades del sistema.
-- El trabajo colaborativo fue fundamental para el éxito del proyecto, permitiendo dividir tareas, resolver dudas en equipo y lograr una entrega bien estructurada tanto a nivel técnico como documental.
+- La implementación del historial de recargas por tarjeta permitió ampliar las capacidades del sistema, brindando una visión más detallada del comportamiento de los usuarios y su relación con las recargas realizadas.
+- Al vincular las tarjetas con una tabla de usuarios, se logró simular un entorno más cercano a un sistema real, facilitando consultas más ricas y análisis personalizados.
+- El desarrollo de esta mejora implicó no solo la creación de nuevas estructuras, sino también la actualización de tablas existentes, el uso de claves foráneas y la ejecución de consultas con múltiples JOIN, lo cual consolidó el aprendizaje de relaciones entre entidades en bases de datos relacionales.
+
+[⬆️ Volver a la tabla de contenido](#-tabla-de-contenido)
+
+---
 
 ## 🛠️ Recomendaciones
 
-- Para futuras versiones del sistema, se recomienda integrar mecanismos de seguridad y validación de datos más robustos, especialmente en la entrada de incidencias y promociones.
-- También sería útil desarrollar vistas y procedimientos almacenados que faciliten la administración y análisis de los datos sin necesidad de escribir consultas complejas manualmente.
-- Por último, se sugiere complementar este sistema con una interfaz gráfica o aplicación web que consuma los datos y permita una interacción más intuitiva por parte de los usuarios finales o administrativos.
+- Para futuras versiones del sistema, se recomienda crear procedimientos almacenados que automaticen el registro del historial de recargas desde el momento en que se realice una transacción en la tabla principal recargas.
+- También sería útil agregar campos adicionales como ubicación de recarga o canal (terminal, web, app) para enriquecer el análisis de uso del sistema.
+- Finalmente, se sugiere integrar estos datos con herramientas de visualización o reportes automáticos que permitan a los administradores del sistema obtener información útil de manera rápida y clara.
+
+[⬆️ Volver a la tabla de contenido](#-tabla-de-contenido)
+
+---
 
 ## 👥 Desarrolladores
+[⬆️ Volver a la tabla de contenido](#-tabla-de-contenido)
 
 Este proyecto fue desarrollado por **Dafne Julieth Cortés Sarmiento**, **Johana Jazmín Saavedra Tafur** y **David Stiven Silva Velandia**, estudiantes de tercer semestre del programa **Técnica Profesional en Programación de Aplicaciones de Software** de la **Fundación Universitaria Compensar**.
 
@@ -129,7 +172,5 @@ Como equipo, tuvimos una participación activa en la **creación de estructuras 
     </td>
   </tr>
 </table>
-
-<p><em>Fundación Universitaria UCompensar – 2025</em></p>
 
 </div>
