@@ -17,6 +17,7 @@ BEGIN
 END;
 $$;
 
+
 DO $$
 BEGIN
   FOR i IN 1..100 LOOP
@@ -35,6 +36,23 @@ BEGIN
     UPDATE tarjetas
     SET usuario_id = i
     WHERE tarjeta_id = i;
+  END LOOP;
+END;
+$$;
+
+...
+END;
+$$;
+
+
+DO $$
+BEGIN
+  FOR i IN 1..100 LOOP
+    INSERT INTO promociones (nombre, descripcion)
+    VALUES (
+      CONCAT('Promoción ', i),
+      CONCAT('Descripción de la promoción número ', i, ': bono especial de ', 5 + (i % 15), '%')
+    );
   END LOOP;
 END;
 $$;
