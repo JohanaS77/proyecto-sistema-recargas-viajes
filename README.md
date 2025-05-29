@@ -11,7 +11,6 @@ Este repositorio contiene la implementación de las mejoras al sistema de base d
 - [🧾 Tablas modificadas o creadas](#-tablas-modificadas-o-creadas)
 - [🗂️ Tipo de datos insertados](#️-tipo-de-datos-insertados)
 - [📋 Consultas desarrolladas](#-consultas-desarrolladas)
-- [🔐 Credenciales (base de datos de pruebas)](#-credenciales-base-de-datos-de-pruebas)
 - [✅ Conclusiones](#-conclusiones)
 - [🛠️ Recomendaciones](#️-recomendaciones)
 - [👥 Desarrolladores](#-desarrolladores)
@@ -110,18 +109,6 @@ Esto permite validar correctamente las funcionalidades y consultas desarrolladas
 - Total recargado por tarjeta en el último mes
 - Medios de pago más usados y su promedio
 - Historial de recargas con nombre del usuario (JOIN con tarjetas y usuarios)
-
-[⬆️ Volver a la tabla de contenido](#-tabla-de-contenido)
-
----
-
-## 🔐 Credenciales (base de datos de pruebas)
-
-- **Host:** 149.130.169.172
-- **User:** admin
-- **Pass:** Pass!__2025!
-- **Port:** 33333
-- **DB:** sistema_recargas_viajes
 
 [⬆️ Volver a la tabla de contenido](#-tabla-de-contenido)
 
